@@ -9,95 +9,88 @@ from dotenv import load_dotenv
 # .env 파일 불러오기
 load_dotenv()
 
-# 환경 변수 읽기
+# 환경 변수 (서비스 키 등) 읽기
 service_key = os.getenv("SERVICE_KEY")
-file_path = os.getenv("File_path")
-json_file = os.getenv("key_json")
-base_url = "http://apis.data.go.kr/B551011/KorService1/searchKeyword1"
+base_url = "http://apis.data.go.kr/B551011/KorService1/categoryCode1"
 
-# 초기 파라미터 설정
-params = {
-    "serviceKey": service_key,
-    "pageNo": 1,            # 시작 페이지 번호 (반복문 내에서 업데이트)
-    "numOfRows": 1000,        # 한 페이지당 항목 수 (필요에 따라 조정)
-    "MobileApp": "AppTest",
-    "MobileOS": "ETC",
-    "arrange": "A",
-    # "contentTypeId": 12,
-    "areaCode":31,          # areaCode 1 (모든 데이터)
-    "_type": "json",         # JSON 응답 요청
-    "keyword" : "박물관"
-}
+file_path = "카테고리.xlsx"  # cat1, cat2가 저장된 엑셀 파일 경로
+df_cat12 = pd.read_excel(file_path)
 
+# cat3 결과를 모을 리스트
+all_cat3_items = []
 
-response = requests.get(base_url, params=params)
-data = response.json()
-try:
-    total_count = int(data["response"]["body"]["totalCount"])
-except (KeyError, TypeError, ValueError) as e:
-    print("totalCount를 확인할 수 없습니다.", e)
-    total_count = None
+# 각 행마다 (대분류, 중분류) 정보를 이용하여 소분류(cat3) 호출
+for idx, row in df_cat12.iterrows():
+    cat1 = str(row["cat1"]).strip()   # 예: "A01"
+    cat2 = str(row["cat2"]).strip()   # 예: "A0101", "A0102", "A0201", 등
 
-if total_count is not None:
-    print(f"전체 데이터 개수: {total_count}")
-    total_pages = math.ceil(total_count / params["numOfRows"])
-    print(f"전체 페이지 수: {total_pages}")
+    # cat2의 첫 3글자가 cat1과 동일한 경우에만 처리
+    if not cat2.startswith(cat1):
+        print(f"[건너뜀] 대분류(cat1)={cat1}와 중분류(cat2)={cat2}의 3글자가 일치하지 않음.")
+        continue
 
-    all_items = []
-    for page in range(1, total_pages + 1):
-        params["pageNo"] = page
-        response = requests.get(base_url, params=params)
-        if response.status_code != 200:
-            print(f"페이지 {page} 요청 실패: 상태 코드 {response.status_code}")
-            break
+    print(f"\n[조회] 대분류(cat1)={cat1}, 중분류(cat2)={cat2}")
 
+    # API 요청 파라미터 설정 (소분류 조회)
+    params = {
+        "serviceKey": service_key,
+        "cat1": cat1,           # 대분류 코드
+        "cat2": cat2,           # 중분류 코드 (이 값은 첫 3글자가 cat1과 동일해야 함)
+        "MobileApp": "AppTest",
+        "MobileOS": "ETC",
+        "pageNo": 1,
+        "numOfRows": 9999,      # 충분히 큰 값(소분류 항목 수가 많지 않으므로)
+        "_type": "json"
+    }
+
+    # API 호출
+    response = requests.get(base_url, params=params)
+    try:
         data = response.json()
-        try:
-            items = data["response"]["body"]["items"]["item"]
-        except (KeyError, TypeError) as e:
-            print(f"페이지 {page}에 데이터가 없거나 구조가 다릅니다. 오류: {e}")
+    except Exception as e:
+        print(f"[오류] cat1={cat1}, cat2={cat2} JSON 파싱 실패: {e}")
+        continue
+
+    # 응답 구조에서 소분류(항목) 데이터 확인
+    try:
+        items_field = data["response"]["body"]["items"]
+        if not isinstance(items_field, dict) or "item" not in items_field:
+            print(f"[주의] cat1={cat1}, cat2={cat2}에 대한 소분류 데이터가 없습니다. (items_field 타입: {type(items_field)})")
             continue
+        items = items_field["item"]
+    except Exception as e:
+        print(f"[주의] cat1={cat1}, cat2={cat2} 데이터 처리 오류: {e}")
+        continue
 
-        # 단일 항목이 dict 형태로 전달될 경우 리스트로 변환
-        if isinstance(items, dict):
-            items = [items]
+    # 단일 항목이면 리스트로 변환
+    if isinstance(items, dict):
+        items = [items]
 
-        all_items.extend(items)
-        print(f"페이지 {page} 완료, {len(items)}개 항목 수집됨.")
-        time.sleep(1)  # 요청 간 간격
+    # 수집된 소분류 데이터 누적
+    for item in items:
+        code3 = item.get("code")    # 소분류 코드
+        name3 = item.get("name")    # 소분류 이름
+        all_cat3_items.append({
+            "cat1": cat1,
+            "cat2": cat2,
+            "cat3": code3,
+            "cat3_name": name3
+        })
 
-    print(f"\n총 {len(all_items)}개의 항목을 수집하였습니다.")
+    print(f"[완료] cat1={cat1}, cat2={cat2}: {len(items)}개 항목 수집됨.")
+    time.sleep(1)  # API 과부하 방지를 위한 딜레이
 
-    if all_items:
-        df = pd.DataFrame(all_items)
-        # 영어 컬럼명을 한글로 매핑
-        column_mapping = {
-            "addr1"	        :    "주소",
-            "addr2"	        :   "상세주소",
-            "areacode"	    :   "지역코드",
-            "booktour"	    :   "교과서속여행지여부",
-            "cat1"	        :   "대분류",
-            "cat2"	        :   "중분류",
-            "cat3"	        :   "소분류",
-            "contentid"	    :   "콘텐츠ID",
-            "contenttypeid"	:   "콘텐츠타입ID",
-            "createdtime"	:   "등록일",
-            "firstimage"	:   "대표이미지(원본)",
-            "firstimage2"	:   "대표이미지(썸네일)",
-            "cpyrhtDivCd"	:   "저작권 유형",
-            "mapx"	        :   "GPS X좌표",
-            "mapy"	        :   "GPS Y좌표",
-            "mlevel"	    :   "Map Level",
-            "modifiedtime"	:   "수정일",
-            "sigungucode"   :   "시군구코드",
-            "tel"           :   "전화번호",
-            "title"         :   "제목",
-            "zipcode"       :   "우편번호"
+# 모든 소분류 데이터를 엑셀로 저장
+if all_cat3_items:
+    df_cat3 = pd.DataFrame(all_cat3_items)
+    # 원하는 순서의 컬럼 정렬
+    df_cat3 = df_cat3[["cat1", "cat2", "cat3", "cat3_name"]]
+    
+    # (옵션) 컬럼 매핑 정보 적용
+    # df_cat3.rename(columns=column_mapping, inplace=True)
 
-        }
-        df.rename(columns=column_mapping, inplace=True)
-        excel_filename = "keyword_박물관_경기_korean.xlsx"
-        df.to_excel(excel_filename, index=False)
-        print(f"데이터가 '{excel_filename}' 파일로 저장되었습니다.")
+    output_file = "대분류중분류_소분류결과.xlsx"
+    df_cat3.to_excel(output_file, index=False)
+    print(f"\n소분류 정보가 '{output_file}' 파일로 저장되었습니다.")
 else:
-    print("전체 데이터 개수를 확인할 수 없습니다.")
+    print("수집된 소분류(cat3) 데이터가 없습니다.")

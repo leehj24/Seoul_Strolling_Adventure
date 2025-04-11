@@ -11,12 +11,12 @@ load_dotenv()
 
 # 환경 변수 읽기
 service_key = os.getenv("SERVICE_KEY")
-file_path = os.getenv("File_path")
-json_file = os.getenv("key_json")
-
+file_path = r'E:\machin-prj\지역\새 폴더\tourism_data_관광지_경기_korean.xlsx'
+json_file = r'E:\machin-prj\DATA_python\key.json'
 # 엑셀 파일 읽기 (콘텐츠ID가 담긴 파일)
-df = pd.read_excel(file_path)
+df = pd.read_excel(file_path)  #쇼핑경기
 content_ids = df["콘텐츠ID"].tolist()  # 콘텐츠ID 목록 추출
+content_ids = content_ids[668:1000] +content_ids[1028::]
 
 # Encoded 서비스 키 (이미 URL 인코딩된 상태)
 base_url = "http://apis.data.go.kr/B551011/KorService1/detailIntro1"
@@ -27,7 +27,7 @@ with open(json_file, "r", encoding="utf-8") as f:
 
 # API 호출 횟수를 세기 위한 변수 (1000번 초과 시 중단)
 request_counter = 0
-max_requests = 1000
+max_requests = 3000
 stop_flag = False
 
 # 모든 콘텐츠ID의 데이터를 저장할 리스트
@@ -47,11 +47,11 @@ for content_id in content_ids:
     params = {
         "serviceKey": service_key,
         "pageNo": 1,
-        "numOfRows": 1000,
+        "numOfRows": 3000,
         "MobileApp": "AppTest",
         "MobileOS": "ETC",
         "contentId": content_id,
-        "contentTypeId": 28,
+        "contentTypeId": 12,
         "_type": "json"
     }
 
@@ -122,7 +122,7 @@ if all_collected_items:
     # 불러온 컬럼 매핑 정보를 사용하여 DataFrame 컬럼명 변경
     df_all.rename(columns=column_mapping, inplace=True)
     
-    excel_filename = "소개_경기_레포츠_전체데이터.xlsx"
+    excel_filename = "소개_경기_관광지_추가_전체데이터.xlsx"
     df_all.to_excel(excel_filename, index=False)
     print(f"\n전체 데이터가 '{excel_filename}' 파일로 저장되었습니다.")
     print(f"총 API 호출 횟수: {request_counter}")

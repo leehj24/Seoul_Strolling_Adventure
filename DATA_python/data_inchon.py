@@ -11,10 +11,10 @@ load_dotenv()
 
 # 환경 변수 읽기
 service_key = os.getenv("SERVICE_KEY")
-file_path = os.getenv("File_path")
+file_path = r"E:\machin-prj\지역\새 폴더\tourism_data_쇼핑_경기_korean.xlsx"
 json_file = os.getenv("key_json")
 
-contentTypeId = 39
+contentTypeId = 38
 # 엑셀 파일 읽기
 df = pd.read_excel(file_path)
 
@@ -61,5 +61,5 @@ seoul_detail1 = pd.DataFrame(all_details)
 seoul_detail1 = seoul_detail1.drop_duplicates()
 
 # 저장
-seoul_detail1.to_csv("ZB)ZB)TourAPI_gyeonggi_음식점_detail.csv", index=False, encoding="utf-8-sig")
+seoul_detail1.to_csv("ZB)ZB)TourAPI_gyeonggi_쇼핑_detail.csv", index=False, encoding="utf-8-sig")
 print(":흰색_확인_표시: 저장 완료! 총 행 수:", len(seoul_detail1))
