@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>여행 추천 챗봇 채채</title>
+
+  <style>
+    /* ─── 기본 레이아웃 ─── */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Apple SD Gothic Neo',sans-serif;
+      background:#f5f5f5; color:#333;
+      display:flex; flex-direction:column; height:100vh;
+    }
+    header {
+      padding:1rem 2rem; background:#fff; border-bottom:1px solid #eee;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    header h1 { font-size:1.2rem; }
+
+    .chat-main { flex:1; display:flex; flex-direction:column; }
+    #chat-window { flex:1; padding:1rem; overflow-y:auto; }
+
+    /* ─── 채팅 버블 ─── */
+    .message { display:flex; margin-bottom:1rem; }
+    .message.bot  { justify-content:flex-start; }
+    .message.user { justify-content:flex-end;  }
+    .message .icon { width:32px; height:32px; flex-shrink:0; margin-right:.5rem; }
+    .message.user .icon { margin-left:.5rem; margin-right:0; }
+    .message .icon svg { width:24px; height:24px; fill:#222; }
+    .message .text {
+      max-width:70%; padding:.75rem 1rem;
+      background:#f0f0f0; border-radius:12px 12px 12px 0;
+      white-space:pre-wrap;
+    }
+    .message.user .text {
+      background:#222; color:#fff; border-radius:12px 12px 0 12px;
+    }
+
+    /* ─── 입력창 ─── */
+    .input-area {
+      display:flex; align-items:center;
+      padding:.5rem 1rem; background:#fff; border-top:1px solid #ddd;
+    }
+    .input-area input {
+      flex:1; padding:.75rem 1rem;
+      border:1px solid #ccc; border-radius:20px;
+    }
+    .input-area button {
+      width:48px; height:48px; margin-left:.5rem;
+      border:none; border-radius:50%; background:#222;
+      display:flex; justify-content:center; align-items:center;
+      cursor:pointer;
+    }
+    .input-area button svg { fill:#fff; }
+
+    /* ─── 테마·선호도 카드 ─── */
+    .theme-container {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:.75rem;
+      padding:1rem; background:#fff;
+    }
+    .pref-container {
+      display:flex; flex-direction:column; gap:.5rem;
+      padding:1rem; background:#fff;
+    }
+    .theme-card, .pref-card {
+      background:#fff; border:1px solid #ccc; border-radius:8px;
+      padding:1rem; text-align:center; cursor:pointer; transition:.2s;
+    }
+    .theme-card.selected, .pref-card.selected {
+      background:#222; border-color:#222; color:#fff;
+    }
+    .theme-card .icon, .pref-card .icon {
+      font-size:24px; margin-bottom:.5rem;
+    }
+
+    .btn-complete {
+      margin:0 1rem 1rem; padding:.75rem;
+      border:none; border-radius:4px; width:calc(100% - 2rem);
+      font-size:1rem; background:#222; color:#fff;
+      text-align:center; opacity:.5; cursor:pointer; transition:.2s;
+    }
+    .btn-complete.enabled { opacity:1; }
+    .restart {
+      margin:1rem; padding:.75rem; border:none; border-radius:4px;
+      background:#222; color:#fff; width:calc(100% - 2rem);
+      font-size:1rem; cursor:pointer;
+    }
+
+    /* ─── 추천 카드 박스 ─── */
+    .recommend-box {
+      border:2px solid #222; border-radius:10px;
+      margin:1rem 0; background:#fff; padding:1rem;
+    }
+    .recommend-box h3 { margin-bottom:1rem; font-size:1.1rem; }
+
+    /* 카드 5×2 (10개) 그리드 */
+    .card-container {
+      display:grid; grid-template-columns:repeat(2,1fr);   /* 2열 */
+      gap:1rem;
+    }
+    .route-card {
+      background:#f7f7f7; border:1px solid #ddd; border-radius:8px;
+      padding:1rem 1.25rem; display:flex; align-items:center; gap:.75rem;
+      cursor:pointer; transition:.2s;
+    }
+    .route-card:hover {
+      box-shadow:0 3px 10px rgba(0,0,0,.1);
+    }
+    .badge {
+      min-width:32px; height:32px; border-radius:50%;
+      background:#222; color:#fff; text-align:center;
+      line-height:32px; font-size:.9rem;
+    }
+    .stage-name { flex:1; font-size:.95rem; }
+  </style>
+</head>
+
+<body>
+  <!-- ─── 헤더 ─── -->
+  <header>
+    <h1>여행 추천 챗봇 채채</h1>
+    <button onclick="location.href='{{ url_for('index') }}'"
+            style="border:none;background:none;font-size:1.3rem">🏠</button>
+  </header>
+
+  <div class="chat-main">
+    <!-- ─── 채팅 영역 ─── -->
+    <div id="chat-window">
+      {% for msg in session.get('messages', []) %}
+        <div class="message {{ msg.sender }}">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="text">{{ msg.text }}</div>
+        </div>
+      {% endfor %}
+
+      {% if session.get('state') == '완료' and session.get('routes') %}
+        <div class="recommend-box">
+  
+          <h3>대중교통 추천경로</h3>
+          <div class="card-container">
+            {% for rt in session.get('routes')[:10] %}
+              <!-- div → a 로 변경 -->
+              <a href="{{ url_for('route_detail', idx=loop.index0) }}" class="route-card">
+                <span class="badge">{{ loop.index }}</span>
+                <span class="stage-name">{{ rt['단계'] }}</span>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- ─── 입력창 / 단계별 UI ─── -->
+    {% if session.get('state') in ['지역','완료'] %}
+      <form class="input-area" method="post" action="{{ url_for('chat') }}">
+        <input type="text" name="message" placeholder="메시지를 입력하세요..." required>
+        <button type="submit">
+          <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+        </button>
+      </form>
+    {% endif %}
+
+    {% if session.get('state') == '테마' %}
+      <div class="theme-container">
+        {% for t,icon in [
+            ('음식','🍴'),('관광','🎫'),('레포츠','🏄'),('쇼핑','🛍️'),
+            ('자연','🌳'),('문화','🎭'),('역사','📜'),('힐링','❤️')
+        ] %}
+          <div class="theme-card" data-value="{{ t }}">
+            <div class="icon">{{ icon }}</div>
+            <div class="label">{{ t }}</div>
+          </div>
+        {% endfor %}
+      </div>
+      <button id="theme-complete" class="btn-complete">선택 완료 (0/3)</button>
+      <form id="theme-form" method="post" action="{{ url_for('chat') }}">
+        <input type="hidden" name="themes" id="themes-input">
+      </form>
+    {% endif %}
+
+    {% if session.get('state') == '선호도' %}
+      <div class="pref-container">
+        {% for p,icon in [('인기도','👍'),('대중교통','🚋'),('보행','🚶')] %}
+          <div class="pref-card" data-value="{{ p }}">
+            <div class="icon">{{ icon }}</div>
+            <div class="label">{{ p }}</div>
+          </div>
+        {% endfor %}
+      </div>
+      <button id="pref-complete" class="btn-complete">선택 완료</button>
+      <form id="pref-form" method="post" action="{{ url_for('chat') }}">
+        <input type="hidden" name="preferences" id="pref-input">
+      </form>
+    {% endif %}
+
+    {% if session.get('state') == '완료' %}
+      <button class="restart" onclick="location.href='{{ url_for('start') }}'">
+        새 채팅하기
+      </button>
+    {% endif %}
+  </div>
+
+  <!-- ─── JS: 카드 선택 로직 ─── -->
+  <script>
+    const state = "{{ session.get('state') }}";
+    const chatWin = document.getElementById('chat-window');
+    if (chatWin) chatWin.scrollTop = chatWin.scrollHeight;
+
+    /* 테마 선택 로직 */
+    if (state === '테마') {
+      const cards = document.querySelectorAll('.theme-card');
+      const btn   = document.getElementById('theme-complete');
+      const input = document.getElementById('themes-input');
+      let   sel   = [];
+
+      btn.disabled = true;
+
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          const v = card.dataset.value;
+          if (card.classList.contains('selected')) {
+            card.classList.remove('selected');
+            sel = sel.filter(x => x !== v);
+          } else if (sel.length < 3) {
+            card.classList.add('selected');
+            sel.push(v);
+          }
+          btn.textContent = `선택 완료 (${sel.length}/3)`;
+          btn.disabled    = sel.length < 1;
+          btn.classList.toggle('enabled', sel.length > 0);
+        });
+      });
+
+      btn.addEventListener('click', () => {
+        input.value = sel.join(',');
+        document.getElementById('theme-form').submit();
+      });
+    }
+
+    /* 선호도 선택 로직 */
+    if (state === '선호도') {
+      const cards = document.querySelectorAll('.pref-card');
+      const btn   = document.getElementById('pref-complete');
+      const input = document.getElementById('pref-input');
+      let   sel   = [];
+
+      btn.disabled = true;
+
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          const v = card.dataset.value;
+          if (!card.classList.contains('selected')) {
+            card.classList.add('selected');
+            sel.push(v);
+          }
+          btn.disabled = sel.length !== cards.length;
+          btn.classList.toggle('enabled', sel.length === cards.length);
+        });
+      });
+
+      btn.addEventListener('click', () => {
+        input.value = sel.join(',');
+        document.getElementById('pref-form').submit();
+      });
+    }
+  </script>
+</body>
+</html>
