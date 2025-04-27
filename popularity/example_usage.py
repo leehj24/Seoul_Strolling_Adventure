@@ -1,8 +1,8 @@
 from popularity_scorer import PopularityScorer
 
 # 리뷰데이터 파일 경로
-input_path = "./data/zb_review_data_final.csv"  # 입력 데이터
-output_path = "./data/popularity_result.csv"    # 결과(출력) 데이터
+input_path = r"C:\Users\hyunj\Seoul_Strolling_Adventure\popularity\zb_review_data_final.csv"  # 입력 데이터
+output_path = r"C:\Users\hyunj\Seoul_Strolling_Adventure\popularity\popularity_result.csv"    # 결과(출력) 데이터
 
 # 인기도지수 계산 실행
 scorer = PopularityScorer(input_path)
