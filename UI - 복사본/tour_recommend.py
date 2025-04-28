@@ -40,7 +40,7 @@ def tour(region: str, selection: list[str]) -> pd.DataFrame:
     df_tourism =  pd.read_sql(df_trip_merged, con=engine)
 
     main_theme = selection[0].strip()
-    df_food = df_region[df_region["cat1"].str.strip() == main_theme].copy()
+    # df_food = df_region[df_region["cat1"].str.strip() == main_theme].copy()
 
     # 거리 계산 및 새로운 열 추가
     df_tourism["거리"] = df_tourism.apply(lambda row: haversine(station_lat, station_lon, row["위도"], row["경도"]), axis=1)
@@ -126,8 +126,9 @@ def tour(region: str, selection: list[str]) -> pd.DataFrame:
     df_recommend["추천장소2"] = df_recommend["추천장소2"].apply(lambda x: ", ".join(x))  # 리스트를 문자열로 변환
     df_recommend["추천장소3"] = df_recommend["추천장소3"].apply(lambda x: ", ".join(map(str, x)).replace("[", "").replace("]", "") if isinstance(x, list) else str(x))
     df_recommend["추천장소3"] = df_recommend["추천장소3"].apply(lambda x: ", ".join(map(str, x)).replace("(", "").replace(")", "").replace("[", "").replace("]", "").strip() if isinstance(x, (list, tuple)) else str(x).replace("(", "").replace(")", "").replace("[", "").replace("]", "").strip())
+    df_recommend["추천장소3"] = df_recommend["추천장소3"].apply(lambda x: str(x).replace("'", ""))
 
-
+    df_recommend.to_csv("tour_recommend.csv", index=False, encoding="utf-8-sig")
     return pd.DataFrame(df_recommend)
 
-# print(tour("서울", ["음식","자연"]))
+# print(tour("서울", ["자연","음식"]))
