@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title }} – 인기도 추천 상세</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Apple SD Gothic Neo', sans-serif; background: #fafafa; color: #111; }
+    a { color: inherit; text-decoration: none; }
+    header { padding: 1rem 2rem; border-bottom: 1px solid #eee; background: #fff; }
+    header .back { font-size: 1rem; display: inline-flex; align-items: center; gap: 0.25rem; cursor: pointer; }
+    .title-wrap { padding: 2rem; }
+    .title-wrap h2 { font-size: 1.6rem; font-weight: 700; }
+    .title-wrap p { color: #666; margin-top: 0.5rem; }
+    .card-list { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+    }
+    .card-title { font-weight: 600; margin-bottom: 0.5rem; }
+    .recs { margin-top: 0.5rem; font-size: 0.95rem; color: #555; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="back" href="{{ url_for('chat') }}">← 채팅으로 돌아가기</a>
+  </header>
+
+  <section class="title-wrap">
+    <h2>{{ title }}</h2>
+    <p>{{ subtitle }}</p>
+  </section>
+
+  <section class="card-list">
+    {% for leg in legs %}
+    <div class="card">
+      <div class="card-title">{{ leg.no }}단계: {{ leg.place }} (도보 {{ leg.walk_km }}km)</div>
+      {% if leg.recs %}
+        <div class="recs">추천 장소: {{ leg.recs | join(", ") }}</div>
+      {% else %}
+        <div class="recs">추천 장소 정보 없음</div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </section>
+
+</body>
+</html>

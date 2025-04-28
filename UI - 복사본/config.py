@@ -17,7 +17,6 @@ THEMES = [
 PREFERENCES = [
     '인기도',
     '대중교통',
-    '보행',
 ]
 
 # 카카오맵 REST API 키
