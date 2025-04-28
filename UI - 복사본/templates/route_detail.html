@@ -135,6 +135,13 @@ dialog::backdrop{background:rgba(0,0,0,.4);}
   {% endfor %}
 </section>
 
+{% if busy_img_data %}
+  <div style="padding: 2rem; text-align: center;">
+    <h3 style="margin-bottom: 1rem;">혼잡도 그래프</h3>
+    <img src="data:image/png;base64,{{ busy_img_data }}" alt="혼잡도 그래프" style="max-width:90%; height:auto; border-radius:8px;">
+  </div>
+{% endif %}
+
 <!-- 모달 -->
 <dialog id="info-modal">
   <div class="modal-head">

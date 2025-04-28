@@ -180,4 +180,4 @@ def recommend(region: str, selection: list[str]) -> pd.DataFrame:
 
     return pd.DataFrame(routes)
 
-# print(recommend("서울", ["음식","자연"]))
+print(recommend("서울", ["음식","자연"]))
