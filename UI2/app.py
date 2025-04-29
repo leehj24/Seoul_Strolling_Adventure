@@ -9,6 +9,7 @@ from flask import (
 from recommend import recommend
 from busy_recommend import busy
 from tour_recommend import tour  # 🔥 인기도 추천 연결 추가
+from config import THEMES, PREFERENCES
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dev-key")
@@ -16,7 +17,6 @@ app.secret_key = os.environ.get("SECRET_KEY", "dev-key")
 app.config["SESSION_TYPE"] = "filesystem"  # 서버 파일시스템에 저장
 Session(app)
 
-# ─────────────────────────────────────────────────────────
 @app.before_request
 def ensure_messages():
     session.setdefault("messages", [])
@@ -98,10 +98,10 @@ def chat():
             themes = session.get("themes")
 
             try:
-                df_routes = recommend(region, themes)  # 대중교통 추천
+                df_routes = recommend(region, themes)
                 session["routes"] = df_routes.to_dict(orient="records")
 
-                df_tour = tour(region, themes)  # 인기도 추천
+                df_tour = tour(region, themes)
                 session["tour_routes"] = df_tour.to_dict(orient="records")
 
                 if df_routes.empty and df_tour.empty:
@@ -116,7 +116,12 @@ def chat():
 
         return redirect(url_for("chat"))
 
-    return render_template("chat.html")
+    # GET 요청 시, 테마 및 선호도 옵션을 템플릿에 전달
+    return render_template(
+        "chat.html",
+        themes=THEMES,
+        preferences=PREFERENCES
+    )
 
 # ── 대중교통 추천 상세 ──────────────────────────────────
 @app.route("/route/<int:idx>")
@@ -173,12 +178,22 @@ def tour_route_detail(idx: int):
         return redirect(url_for("chat"))
 
     row = tour_routes[idx]
+    region = session.get('region')
+    if region:
+        fig = busy(region)
+        img_io = io.BytesIO()
+        fig.savefig(img_io, format='png')
+        img_io.seek(0)
+        busy_img_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
+    else:
+        busy_img_data = None
 
     return render_template(
         "tour_route_detail.html",
         title=row["추천장소"],
         subtitle=f"{session.get('region')} 일대 인기도 추천장소",
-        details=row
+        details=row,
+        busy_img_data=busy_img_data
     )
 
 # ── 로그아웃 ───────────────────────────────────────────
