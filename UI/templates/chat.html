@@ -104,6 +104,7 @@
       color: #fff;
     }
     .theme-card .icon { font-size: 24px; margin-bottom: 0.5rem; }
+    .theme-card .label { font-size: 0.9rem; }
 
     .pref-container {
       display: flex;
@@ -128,6 +129,7 @@
       color: #fff;
     }
     .pref-card .icon { font-size: 24px; margin-bottom: 0.5rem; }
+    .pref-card .label { font-size: 0.9rem; }
 
     .btn-complete {
       margin: 0 1rem 1rem;
@@ -167,57 +169,20 @@
       cursor: pointer;
     }
     .route-card:hover { box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); }
-    .badge {
-      min-width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #222;
-      color: #fff;
-      text-align: center;
-      line-height: 32px;
-      font-size: 0.9rem;
-    }
+    .badge { min-width: 32px; height: 32px; border-radius: 50%; background: #222; color: #fff; text-align: center; line-height: 32px; font-size: 0.9rem; }
     .stage-name { flex: 1; font-size: 0.95rem; }
 
-    .restart {
-      margin: 2rem 1rem 1rem;
-      padding: 1rem;
-      width: calc(100% - 2rem);
-      background: #222;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      text-align: center;
-    }
+    .restart { margin: 2rem 1rem 1rem; padding: 1rem; width: calc(100% - 2rem); background: #222; color: #fff; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; text-align: center; }
 
-    /* 로딩 오버레이 */
-    #loader-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(0,0,0,0.35);
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-    .spinner {
-      width: 60px;
-      height: 60px;
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #222;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
+    #loader-overlay { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.35); display: none; justify-content: center; align-items: center; }
+    .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid #222; border-radius: 50%; animation: spin 1s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
   <header>
     <h1>여행 추천 챗봇 채채</h1>
-    <button onclick="location.href='{{ url_for('index') }}'"
-            style="border:none;background:none;font-size:1.3rem;">🏠</button>
+    <button onclick="location.href='{{ url_for('index') }}'" style="border:none;background:none;font-size:1.3rem;">🏠</button>
   </header>
 
   <div class="chat-main">
@@ -268,12 +233,24 @@
         </button>
       </form>
     {% elif session.get('state') == '테마' %}
-      {% set theme_icons = {'자연':'🌳','레포츠':'🏄','쇼핑':'🛍️','음식':'🍴','인문':'📚','추천코스':'⭐'} %}
+      {# 화면표시 label ↔ 실제 value 매핑 #}
+      {% set theme_icons = {
+           '자연':'🌳','레포츠':'🏄','쇼핑':'🛍️','음식':'🍴',
+           '인문(문화/예술/역사)':'📚','추천코스':'⭐'
+      } %}
+      {% set theme_items = [
+           {'label':'자연', 'value':'자연'},
+           {'label':'레포츠', 'value':'레포츠'},
+           {'label':'쇼핑', 'value':'쇼핑'},
+           {'label':'음식', 'value':'음식'},
+           {'label':'문화', 'value':'인문(문화/예술/역사)'},
+           {'label':'추천코스', 'value':'추천코스'},
+      ] %}
       <div class="theme-container">
-        {% for t in themes %}
-          <div class="theme-card" data-value="{{ t }}">
-            <div class="icon">{{ theme_icons.get(t, '❓') }}</div>
-            <div class="label">{{ t }}</div>
+        {% for item in theme_items %}
+          <div class="theme-card" data-value="{{ item.value }}">
+            <div class="icon">{{ theme_icons[item.value] }}</div>
+            <div class="label">{{ item.label }}</div>
           </div>
         {% endfor %}
       </div>
@@ -286,7 +263,7 @@
       <div class="pref-container">
         {% for p in preferences %}
           <div class="pref-card" data-value="{{ p }}">
-            <div class="icon">{{ pref_icons.get(p, '❓') }}</div>
+            <div class="icon">{{ pref_icons[p] }}</div>
             <div class="label">{{ p }}</div>
           </div>
         {% endfor %}
@@ -303,14 +280,8 @@
   <script>
     const loader = document.getElementById('loader-overlay');
     function showLoader() { loader.style.display = 'flex'; }
-    function hideLoader() { loader.style.display = 'none'; }
-
-    document.querySelectorAll('form').forEach(f => {
-      f.addEventListener('submit', showLoader);
-    });
-    document.querySelectorAll('.route-card').forEach(a => {
-      a.addEventListener('click', showLoader);
-    });
+    document.querySelectorAll('form').forEach(f => f.addEventListener('submit', showLoader));
+    document.querySelectorAll('.route-card').forEach(a => a.addEventListener('click', showLoader));
 
     const state = "{{ session.get('state') }}";
     const chatWin = document.getElementById('chat-window');
@@ -321,32 +292,21 @@
       const btn = document.getElementById('theme-complete');
       const input = document.getElementById('themes-input');
       let sel = [];
-
       btn.disabled = true;
-
       cards.forEach(card => {
         card.addEventListener('click', () => {
           const v = card.dataset.value;
           if (card.classList.contains('selected')) {
-            card.classList.remove('selected');
-            sel = sel.filter(x => x !== v);
+            card.classList.remove('selected'); sel = sel.filter(x => x !== v);
           } else if (sel.length < 3) {
-            card.classList.add('selected');
-            sel.push(v);
+            card.classList.add('selected'); sel.push(v);
           }
           btn.textContent = `선택 완료 (${sel.length}/3)`;
           btn.disabled = sel.length < 1;
           btn.classList.toggle('enabled', sel.length > 0);
         });
       });
-
-      btn.addEventListener('click', () => {
-        if (!btn.disabled) {
-          input.value = sel.join(',');
-          showLoader();
-          document.getElementById('theme-form').submit();
-        }
-      });
+      btn.addEventListener('click', () => { if (!btn.disabled) { input.value = sel.join(','); showLoader(); document.getElementById('theme-form').submit(); }});
     }
 
     if (state === '선호도') {
@@ -354,28 +314,14 @@
       const btn = document.getElementById('pref-complete');
       const input = document.getElementById('pref-input');
       let sel = [];
-
       btn.disabled = true;
-
-      cards.forEach(card => {
-        card.addEventListener('click', () => {
-          const v = card.dataset.value;
-          if (!card.classList.contains('selected')) {
-            card.classList.add('selected');
-            sel.push(v);
-          }
-          btn.disabled = sel.length !== 2;
-          btn.classList.toggle('enabled', sel.length === 2);
-        });
-      });
-
-      btn.addEventListener('click', () => {
-        if (!btn.disabled) {
-          input.value = sel.join(',');
-          showLoader();
-          document.getElementById('pref-form').submit();
-        }
-      });
+      cards.forEach(card => card.addEventListener('click', () => {
+        const v = card.dataset.value;
+        if (!card.classList.contains('selected')) { card.classList.add('selected'); sel.push(v); }
+        btn.disabled = sel.length !== 2;
+        btn.classList.toggle('enabled', sel.length === 2);
+      }));
+      btn.addEventListener('click', () => { if (!btn.disabled) { input.value = sel.join(','); showLoader(); document.getElementById('pref-form').submit(); }});
     }
   </script>
 </body>
