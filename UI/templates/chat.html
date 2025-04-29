@@ -220,7 +220,6 @@
             </div>
           </div>
         {% endfor %}
-
         <button class="restart" onclick="location.href='{{ url_for('start') }}'">새 채팅하기</button>
       {% endif %}
     </div>
@@ -236,7 +235,7 @@
       {# 화면표시 label ↔ 실제 value 매핑 #}
       {% set theme_icons = {
            '자연':'🌳','레포츠':'🏄','쇼핑':'🛍️','음식':'🍴',
-           '인문(문화/예술/역사)':'📚','추천코스':'⭐'
+           '인문(문화/예술/역사)':'📚'
       } %}
       {% set theme_items = [
            {'label':'자연', 'value':'자연'},
@@ -244,7 +243,6 @@
            {'label':'쇼핑', 'value':'쇼핑'},
            {'label':'음식', 'value':'음식'},
            {'label':'문화', 'value':'인문(문화/예술/역사)'},
-           {'label':'추천코스', 'value':'추천코스'},
       ] %}
       <div class="theme-container">
         {% for item in theme_items %}
