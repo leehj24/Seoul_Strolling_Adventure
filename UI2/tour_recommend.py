@@ -155,4 +155,4 @@ def tour(region: str, selection: list[str]) -> pd.DataFrame:
 
     return pd.DataFrame(df_recommend)
 
-print(tour("서울", ["자연","음식"]))
+# print(tour("서울", ["자연","음식"]))

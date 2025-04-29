@@ -84,7 +84,7 @@
 
     .theme-container {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.75rem;
       padding: 1rem;
       background: #fff;
@@ -213,7 +213,6 @@
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
-
 <body>
   <header>
     <h1>여행 추천 챗봇 채채</h1>
@@ -233,7 +232,7 @@
       {% endfor %}
 
       {% if session.get('state') == '완료' %}
-        {% set pref_icons = {'인기도': '🔥', '대중교통': '🚋'} %}
+        {% set pref_icons = {'인기도':'🔥', '대중교통':'🚋'} %}
         {% for pref in session.get('preferences', []) %}
           <div class="recommend-box">
             <h3>{{ pref }} 추천경로 {{ pref_icons.get(pref, '') }}</h3>
@@ -269,10 +268,11 @@
         </button>
       </form>
     {% elif session.get('state') == '테마' %}
+      {% set theme_icons = {'자연':'🌳','레포츠':'🏄','쇼핑':'🛍️','음식':'🍴','인문':'📚','추천코스':'⭐'} %}
       <div class="theme-container">
-        {% for t,icon in [('음식','🍴'),('관광','🎫'),('레포츠','🏄'),('쇼핑','🛍️'),('자연','🌳'),('문화','🎭'),('역사','📜'),('힐링','❤️')] %}
+        {% for t in themes %}
           <div class="theme-card" data-value="{{ t }}">
-            <div class="icon">{{ icon }}</div>
+            <div class="icon">{{ theme_icons.get(t, '❓') }}</div>
             <div class="label">{{ t }}</div>
           </div>
         {% endfor %}
@@ -282,10 +282,11 @@
         <input type="hidden" name="themes" id="themes-input">
       </form>
     {% elif session.get('state') == '선호도' %}
+      {% set pref_icons = {'인기도':'🔥','대중교통':'🚋'} %}
       <div class="pref-container">
-        {% for p,icon in [('인기도','🔥'),('대중교통','🚋')] %}
+        {% for p in preferences %}
           <div class="pref-card" data-value="{{ p }}">
-            <div class="icon">{{ icon }}</div>
+            <div class="icon">{{ pref_icons.get(p, '❓') }}</div>
             <div class="label">{{ p }}</div>
           </div>
         {% endfor %}
