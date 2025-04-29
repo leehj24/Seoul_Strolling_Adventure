@@ -205,4 +205,5 @@ def logout():
 
 # ── 서버 실행 ─────────────────────────────────────────
 if __name__ == "__main__":
-    app.run(debug=True)
+    # 모든 인터페이스에서 5000번 포트로 리스닝
+    app.run(host="0.0.0.0", port=5000, debug=True)

@@ -6,7 +6,9 @@ from math import radians, sin, cos, sqrt, asin
 from sqlalchemy import create_engine
 from utils import geocode_region_kakao, compute_scores
 import pymysql
-
+import matplotlib 
+import matplotlib.pyplot as plt
+matplotlib.use('Agg')
 
 EARTH_RADIUS = 6371.0  # 지구 반지름 km
 
