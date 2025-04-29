@@ -122,7 +122,7 @@ dialog::backdrop{background:rgba(0,0,0,.4);}
          data-type="recs"
          data-reclist="{{ leg.recs|join(', ') }}">
       <div class="badge">{{ m_no }}</div>
-      <div class="card-title">추천 맛집 ({{ leg.recs|length }}곳)</div>
+      <div class="card-title">추천 장소 ({{ leg.recs|length }}곳)</div>
       <div class="tag-list">
         {% for r in leg.recs[:5] %}
           <span class="tag">{{ r }}</span>
@@ -166,7 +166,7 @@ document.querySelectorAll('.info-card').forEach(card=>{
         <p>출발지 : ${card.dataset.start}<br>도착지 : ${card.dataset.end}</p>`;
     }else{
       const list = card.dataset.reclist.split(',').map(s=>s.trim()).filter(Boolean);
-      mTitle.textContent = '추천 맛집 상세';
+      mTitle.textContent = '추천 장소 상세';
       mBody.innerHTML = list.length
         ? '<ul style="padding-left:1.2rem;">' + list.map(r=>`<li>${r}</li>`).join('') + '</ul>'
         : '<p>추천 정보가 없습니다.</p>';
