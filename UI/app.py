@@ -7,7 +7,6 @@ from flask import (
 )
 from flask_session import Session
 from recommend import recommend
-from busy_recommend import busy
 from tour_recommend import tour
 from config import THEMES, PREFERENCES
 
@@ -16,32 +15,29 @@ app.secret_key = os.environ.get("SECRET_KEY", "dev-key")
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-# 간단 메모리 사용자 저장소 (회원가입/로그인용)
-users = {}  # { email: { "password": pw, "nickname": nick } }
+users = {}
 
-# 세션 메시지 초기화
 @app.before_request
 def ensure_messages():
     session.setdefault("messages", [])
 
-# 템플릿에서 current_user 사용
 @app.context_processor
 def inject_user():
-    return dict(current_user=session.get("user"))
+    user_email = session.get("user")
+    user_nick = users[user_email]["nickname"] if user_email and user_email in users else None
+    return dict(current_user=user_email, current_nickname=user_nick)
 
-# ── 랜딩 (불필요하면 chat으로 바로 리다이렉트)
 @app.route("/")
 def index():
     return render_template("landing.html")
 
-# ── 회원가입
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
         email = request.form.get("username", "").strip()
-        nick  = request.form.get("nickname", "").strip()
-        pw    = request.form.get("password", "")
-        conf  = request.form.get("confirm", "")
+        nick = request.form.get("nickname", "").strip()
+        pw = request.form.get("password", "")
+        conf = request.form.get("confirm", "")
 
         if not (email and nick and pw and conf):
             flash("모든 필드를 입력해주세요.")
@@ -56,12 +52,11 @@ def signup():
             return redirect(url_for("chat"))
     return render_template("signup.html")
 
-# ── 로그인
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         email = request.form.get("username", "").strip()
-        pw    = request.form.get("password", "")
+        pw = request.form.get("password", "")
 
         if not (email and pw):
             flash("이메일과 비밀번호를 모두 입력하세요.")
@@ -73,16 +68,18 @@ def login():
             return redirect(url_for("chat"))
     return render_template("login.html")
 
-# ── 로그아웃
 @app.route("/logout")
 def logout():
     session.pop("user", None)
     flash("로그아웃 되었습니다.")
     return redirect(url_for("chat"))
 
-# ── 채팅 인터페이스
 @app.route("/chat", methods=["GET", "POST"])
 def chat():
+    if "user" not in session:
+        flash("로그인이 필요합니다.")
+        return redirect(url_for("login"))
+
     if request.method == "POST":
         state = session.get("state")
 
@@ -136,8 +133,10 @@ def chat():
             try:
                 df_routes = recommend(region, themes)
                 session["routes"] = df_routes.to_dict(orient="records")
+
                 df_tour = tour(region, themes)
                 session["tour_routes"] = df_tour.to_dict(orient="records")
+
                 if df_routes.empty and df_tour.empty:
                     session["messages"].append({
                         "sender": "bot",
@@ -152,26 +151,31 @@ def chat():
             session["state"] = "완료"
 
         else:
-            # 첫 진입 또는 완료 후 '새 채팅하기'
             session["messages"] = [{"sender": "bot", "text": "안녕하세요! 여행 지역을 입력해주세요."}]
             session["state"] = "지역"
 
         return redirect(url_for("chat"))
 
-    # GET: 첫 진입 시 초기 메시지 세팅
     if "state" not in session:
         session["messages"] = [{"sender": "bot", "text": "안녕하세요! 여행 지역을 입력해주세요."}]
         session["state"] = "지역"
 
     return render_template("chat.html", themes=THEMES, preferences=PREFERENCES)
 
-# ── 대중교통 추천 상세
+@app.route("/reset")
+def reset_chat():
+    session.clear()
+    session["messages"] = [{"sender": "bot", "text": "안녕하세요! 여행 지역을 입력해주세요."}]
+    session["state"] = "지역"
+    return redirect(url_for("chat"))
+
 @app.route("/route/<int:idx>")
 def route_detail(idx: int):
     routes = session.get('routes')
     if not routes or idx >= len(routes):
         flash("잘못된 경로이거나 세션이 만료되었습니다.")
         return redirect(url_for("chat"))
+
     row = routes[idx]
     legs = []
     for i in [1, 2]:
@@ -181,37 +185,43 @@ def route_detail(idx: int):
                 "transport": row[f"이동수단{i}"],
                 "start": row[f"타는곳{i}"],
                 "end": row[f"내리는곳{i}"],
-                "recs": [r.strip() for r in row[f"추천음식점{i}"].split(",") if r.strip()]
+                "recs": [r.strip() for r in row.get(f"추천장소{i}", "").split(",") if r.strip()]
             })
-    fig = busy(session.get('region'))
-    img_io = io.BytesIO()
-    fig.savefig(img_io, format='png')
-    img_io.seek(0)
-    busy_img_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
+
+    # 혼잡도 그래프 로딩 (row_{idx}_spline.png)
+    busy_img_data = None
+    img_path = f"plots/row_{idx}_spline.png"
+    if os.path.exists(img_path):
+        with open(img_path, "rb") as f:
+            busy_img_data = base64.b64encode(f.read()).decode()
+
     return render_template(
         "route_detail.html",
-        title=row["단계"],
+        title=row.get("단계", f"추천 경로 {idx+1}"),
         subtitle=f"{session.get('region')} 일대 추천 코스",
         legs=legs,
         busy_img_data=busy_img_data
     )
 
-# ── 인기도 추천 상세
 @app.route("/tour_route/<int:idx>")
 def tour_route_detail(idx: int):
     tour_routes = session.get('tour_routes')
     if not tour_routes or idx >= len(tour_routes):
         flash("잘못된 경로이거나 세션이 만료되었습니다.")
         return redirect(url_for("chat"))
+
     row = tour_routes[idx]
-    fig = busy(session.get('region'))
-    img_io = io.BytesIO()
-    fig.savefig(img_io, format='png')
-    img_io.seek(0)
-    busy_img_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
+
+    # 혼잡도 그래프 로딩 (row_{idx}_spline2.png)
+    busy_img_data = None
+    img_path = f"plots/row_{idx}_spline2.png"
+    if os.path.exists(img_path):
+        with open(img_path, "rb") as f:
+            busy_img_data = base64.b64encode(f.read()).decode()
+
     return render_template(
         "tour_route_detail.html",
-        title=row["추천장소"],
+        title=row.get("추천장소", f"추천 경로 {idx+1}"),
         subtitle=f"{session.get('region')} 일대 인기도 추천장소",
         details=row,
         busy_img_data=busy_img_data
