@@ -132,11 +132,11 @@ def recommend(region: str, selection: list[str]) -> pd.DataFrame:
             "이동수단1": mode1,
             "타는곳1": "출발지",
             "내리는곳1": end1 or "없음",
-            "추천음식점1": ", ".join(rec1_df["title"]) if not rec1_df.empty else "없음",
+            "추천장소1": ", ".join(rec1_df["title"]) if not rec1_df.empty else "없음",
             "이동수단2": mode2,
             "타는곳2": start2 or "없음",
             "내리는곳2": end2 or "없음",
-            "추천음식점2": ", ".join(rec2_df["title"]) if not rec2_df.empty else "없음",
+            "추천장소2": ", ".join(rec2_df["title"]) if not rec2_df.empty else "없음",
         })
 
     return pd.DataFrame(routes)
