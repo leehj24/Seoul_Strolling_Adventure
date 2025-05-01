@@ -164,10 +164,13 @@ def chat():
 
 @app.route("/reset")
 def reset_chat():
+    user = session.get("user")  # 로그인 상태 유지
     session.clear()
+    session["user"] = user      # 로그인 정보 복원
     session["messages"] = [{"sender": "bot", "text": "안녕하세요! 여행 지역을 입력해주세요."}]
     session["state"] = "지역"
     return redirect(url_for("chat"))
+
 
 @app.route("/route/<int:idx>")
 def route_detail(idx: int):
