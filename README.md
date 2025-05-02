@@ -43,8 +43,6 @@ graph TD
 | **캐싱** | **Redis** (지오코딩·쿼리 TTL 24 h) | 응답 속도 300 ms 유지 |
 | **배포** | **Docker Compose + Nginx SSL** | `docker compose up -d` 한 줄 배포 |
 
-
-
 ## 4. 주요 지수 하이라이트
 
 ### 4‑1. 관광지수 (TDI)
@@ -82,8 +80,8 @@ graph TD
 
 
 ## 5. 추천 엔진 프로세스
-
 #### 5‑1. 두 행정동 도보 루트
+
 ```mermaid
 graph TD
     A["출발 좌표 (lat, lon)"] --> J["테마 필터링"]
@@ -94,6 +92,7 @@ graph TD
     E --> F["테마 장소 필터 + 긍정점수"]
     F --> G["도보 거리 행렬 → 최소 경로"]
     G --> H["추천 DataFrame"]
+```
 
 #### 5-2. 대중교통 1,2차 확장
 ```mermaid
