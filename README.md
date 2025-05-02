@@ -35,6 +35,7 @@ graph TD
   H --> I[TDI / PS / CE]
   I --> J[추천 엔진]
   J --> K[Flask 챗봇 + Chart.js]
+```
 
 ## 3‑b. 데이터 처리·운영 스택  
 | 계층 | 상세 | 비고 |
