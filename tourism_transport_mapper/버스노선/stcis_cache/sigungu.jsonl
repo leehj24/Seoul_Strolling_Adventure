@@ -1,0 +1,477 @@
+{"sdCd": "11", "sggCd": "11110", "sggNm": "종로구"}
+{"sdCd": "11", "sggCd": "11140", "sggNm": "중구"}
+{"sdCd": "11", "sggCd": "11170", "sggNm": "용산구"}
+{"sdCd": "11", "sggCd": "11200", "sggNm": "성동구"}
+{"sdCd": "11", "sggCd": "11215", "sggNm": "광진구"}
+{"sdCd": "11", "sggCd": "11230", "sggNm": "동대문구"}
+{"sdCd": "11", "sggCd": "11260", "sggNm": "중랑구"}
+{"sdCd": "11", "sggCd": "11290", "sggNm": "성북구"}
+{"sdCd": "11", "sggCd": "11305", "sggNm": "강북구"}
+{"sdCd": "11", "sggCd": "11320", "sggNm": "도봉구"}
+{"sdCd": "11", "sggCd": "11350", "sggNm": "노원구"}
+{"sdCd": "11", "sggCd": "11380", "sggNm": "은평구"}
+{"sdCd": "11", "sggCd": "11410", "sggNm": "서대문구"}
+{"sdCd": "11", "sggCd": "11440", "sggNm": "마포구"}
+{"sdCd": "11", "sggCd": "11470", "sggNm": "양천구"}
+{"sdCd": "11", "sggCd": "11500", "sggNm": "강서구"}
+{"sdCd": "11", "sggCd": "11530", "sggNm": "구로구"}
+{"sdCd": "11", "sggCd": "11545", "sggNm": "금천구"}
+{"sdCd": "11", "sggCd": "11560", "sggNm": "영등포구"}
+{"sdCd": "11", "sggCd": "11590", "sggNm": "동작구"}
+{"sdCd": "11", "sggCd": "11620", "sggNm": "관악구"}
+{"sdCd": "11", "sggCd": "11650", "sggNm": "서초구"}
+{"sdCd": "11", "sggCd": "11680", "sggNm": "강남구"}
+{"sdCd": "11", "sggCd": "11710", "sggNm": "송파구"}
+{"sdCd": "11", "sggCd": "11740", "sggNm": "강동구"}
+{"sdCd": "23", "sggCd": "23110", "sggNm": "중구"}
+{"sdCd": "23", "sggCd": "23140", "sggNm": "동구"}
+{"sdCd": "23", "sggCd": "23170", "sggNm": "남구"}
+{"sdCd": "23", "sggCd": "23200", "sggNm": "남동구"}
+{"sdCd": "23", "sggCd": "23230", "sggNm": "북구"}
+{"sdCd": "23", "sggCd": "23260", "sggNm": "서구"}
+{"sdCd": "21", "sggCd": "21110", "sggNm": "중구"}
+{"sdCd": "21", "sggCd": "21140", "sggNm": "서구"}
+{"sdCd": "21", "sggCd": "21170", "sggNm": "동구"}
+{"sdCd": "21", "sggCd": "21200", "sggNm": "영도구"}
+{"sdCd": "21", "sggCd": "21230", "sggNm": "부산진구"}
+{"sdCd": "21", "sggCd": "21260", "sggNm": "동래구"}
+{"sdCd": "21", "sggCd": "21290", "sggNm": "남구"}
+{"sdCd": "21", "sggCd": "21320", "sggNm": "북구"}
+{"sdCd": "21", "sggCd": "21350", "sggNm": "해운대구"}
+{"sdCd": "21", "sggCd": "21380", "sggNm": "사하구"}
+{"sdCd": "21", "sggCd": "21410", "sggNm": "금정구"}
+{"sdCd": "21", "sggCd": "21440", "sggNm": "강서구"}
+{"sdCd": "22", "sggCd": "22110", "sggNm": "중구"}
+{"sdCd": "22", "sggCd": "22140", "sggNm": "동구"}
+{"sdCd": "22", "sggCd": "22170", "sggNm": "서구"}
+{"sdCd": "22", "sggCd": "22200", "sggNm": "남구"}
+{"sdCd": "22", "sggCd": "22230", "sggNm": "북구"}
+{"sdCd": "22", "sggCd": "22260", "sggNm": "수성구"}
+{"sdCd": "22", "sggCd": "22290", "sggNm": "달서구"}
+{"sdCd": "28", "sggCd": "28110", "sggNm": "중구"}
+{"sdCd": "28", "sggCd": "28140", "sggNm": "동구"}
+{"sdCd": "28", "sggCd": "28170", "sggNm": "남구"}
+{"sdCd": "28", "sggCd": "28177", "sggNm": "미추홀구"}
+{"sdCd": "28", "sggCd": "28185", "sggNm": "연수구"}
+{"sdCd": "28", "sggCd": "28200", "sggNm": "남동구"}
+{"sdCd": "28", "sggCd": "28230", "sggNm": "북구"}
+{"sdCd": "28", "sggCd": "28237", "sggNm": "부평구"}
+{"sdCd": "28", "sggCd": "28245", "sggNm": "계양구"}
+{"sdCd": "28", "sggCd": "28260", "sggNm": "서구"}
+{"sdCd": "28", "sggCd": "28710", "sggNm": "강화군"}
+{"sdCd": "28", "sggCd": "28720", "sggNm": "옹진군"}
+{"sdCd": "29", "sggCd": "29110", "sggNm": "동구"}
+{"sdCd": "29", "sggCd": "29140", "sggNm": "서구"}
+{"sdCd": "29", "sggCd": "29155", "sggNm": "남구"}
+{"sdCd": "29", "sggCd": "29170", "sggNm": "북구"}
+{"sdCd": "29", "sggCd": "29200", "sggNm": "광산구"}
+{"sdCd": "27", "sggCd": "27110", "sggNm": "중구"}
+{"sdCd": "27", "sggCd": "27140", "sggNm": "동구"}
+{"sdCd": "27", "sggCd": "27170", "sggNm": "서구"}
+{"sdCd": "27", "sggCd": "27200", "sggNm": "남구"}
+{"sdCd": "27", "sggCd": "27230", "sggNm": "북구"}
+{"sdCd": "27", "sggCd": "27260", "sggNm": "수성구"}
+{"sdCd": "27", "sggCd": "27290", "sggNm": "달서구"}
+{"sdCd": "27", "sggCd": "27710", "sggNm": "달성군"}
+{"sdCd": "27", "sggCd": "27720", "sggNm": "군위군"}
+{"sdCd": "24", "sggCd": "24110", "sggNm": "동구"}
+{"sdCd": "24", "sggCd": "24140", "sggNm": "서구"}
+{"sdCd": "24", "sggCd": "24170", "sggNm": "북구"}
+{"sdCd": "24", "sggCd": "24200", "sggNm": "광산구"}
+{"sdCd": "26", "sggCd": "26110", "sggNm": "중구"}
+{"sdCd": "26", "sggCd": "26140", "sggNm": "서구"}
+{"sdCd": "26", "sggCd": "26170", "sggNm": "동구"}
+{"sdCd": "26", "sggCd": "26200", "sggNm": "영도구"}
+{"sdCd": "26", "sggCd": "26230", "sggNm": "부산진구"}
+{"sdCd": "26", "sggCd": "26260", "sggNm": "동래구"}
+{"sdCd": "26", "sggCd": "26290", "sggNm": "남구"}
+{"sdCd": "26", "sggCd": "26320", "sggNm": "북구"}
+{"sdCd": "26", "sggCd": "26350", "sggNm": "해운대구"}
+{"sdCd": "26", "sggCd": "26380", "sggNm": "사하구"}
+{"sdCd": "26", "sggCd": "26410", "sggNm": "금정구"}
+{"sdCd": "26", "sggCd": "26440", "sggNm": "강서구"}
+{"sdCd": "26", "sggCd": "26470", "sggNm": "연제구"}
+{"sdCd": "26", "sggCd": "26500", "sggNm": "수영구"}
+{"sdCd": "26", "sggCd": "26530", "sggNm": "사상구"}
+{"sdCd": "26", "sggCd": "26710", "sggNm": "기장군"}
+{"sdCd": "25", "sggCd": "25110", "sggNm": "동구"}
+{"sdCd": "25", "sggCd": "25140", "sggNm": "중구"}
+{"sdCd": "25", "sggCd": "25170", "sggNm": "서구"}
+{"sdCd": "25", "sggCd": "25200", "sggNm": "유성구"}
+{"sdCd": "25", "sggCd": "25230", "sggNm": "대덕구"}
+{"sdCd": "30", "sggCd": "30110", "sggNm": "동구"}
+{"sdCd": "30", "sggCd": "30140", "sggNm": "중구"}
+{"sdCd": "30", "sggCd": "30170", "sggNm": "서구"}
+{"sdCd": "30", "sggCd": "30200", "sggNm": "유성구"}
+{"sdCd": "30", "sggCd": "30230", "sggNm": "대덕구"}
+{"sdCd": "31", "sggCd": "31110", "sggNm": "중구"}
+{"sdCd": "31", "sggCd": "31140", "sggNm": "남구"}
+{"sdCd": "31", "sggCd": "31170", "sggNm": "동구"}
+{"sdCd": "31", "sggCd": "31200", "sggNm": "북구"}
+{"sdCd": "31", "sggCd": "31710", "sggNm": "울주군"}
+{"sdCd": "36", "sggCd": "36110", "sggNm": "세종시"}
+{"sdCd": "42", "sggCd": "42050", "sggNm": "울진군"}
+{"sdCd": "42", "sggCd": "42110", "sggNm": "춘천시"}
+{"sdCd": "42", "sggCd": "42130", "sggNm": "원주시"}
+{"sdCd": "42", "sggCd": "42150", "sggNm": "강릉시"}
+{"sdCd": "42", "sggCd": "42170", "sggNm": "동해시"}
+{"sdCd": "42", "sggCd": "42190", "sggNm": "태백시"}
+{"sdCd": "42", "sggCd": "42210", "sggNm": "속초시"}
+{"sdCd": "42", "sggCd": "42230", "sggNm": "삼척시"}
+{"sdCd": "42", "sggCd": "42710", "sggNm": "춘성군"}
+{"sdCd": "42", "sggCd": "42715", "sggNm": "춘천군"}
+{"sdCd": "42", "sggCd": "42720", "sggNm": "홍천군"}
+{"sdCd": "42", "sggCd": "42730", "sggNm": "횡성군"}
+{"sdCd": "42", "sggCd": "42740", "sggNm": "원성군"}
+{"sdCd": "42", "sggCd": "42745", "sggNm": "원주군"}
+{"sdCd": "42", "sggCd": "42750", "sggNm": "영월군"}
+{"sdCd": "42", "sggCd": "42760", "sggNm": "평창군"}
+{"sdCd": "42", "sggCd": "42770", "sggNm": "정선군"}
+{"sdCd": "42", "sggCd": "42780", "sggNm": "철원군"}
+{"sdCd": "42", "sggCd": "42790", "sggNm": "화천군"}
+{"sdCd": "42", "sggCd": "42800", "sggNm": "양구군"}
+{"sdCd": "42", "sggCd": "42810", "sggNm": "인제군"}
+{"sdCd": "42", "sggCd": "42820", "sggNm": "고성군"}
+{"sdCd": "42", "sggCd": "42830", "sggNm": "양양군"}
+{"sdCd": "42", "sggCd": "42840", "sggNm": "명주군"}
+{"sdCd": "42", "sggCd": "42850", "sggNm": "삼척군"}
+{"sdCd": "43", "sggCd": "43050", "sggNm": "제천군"}
+{"sdCd": "43", "sggCd": "43110", "sggNm": "청주시"}
+{"sdCd": "43", "sggCd": "43111", "sggNm": "청주시 상당구"}
+{"sdCd": "43", "sggCd": "43112", "sggNm": "청주시 서원구"}
+{"sdCd": "43", "sggCd": "43113", "sggNm": "청주시 흥덕구"}
+{"sdCd": "43", "sggCd": "43114", "sggNm": "청주시 청원구"}
+{"sdCd": "43", "sggCd": "43130", "sggNm": "충주시"}
+{"sdCd": "43", "sggCd": "43150", "sggNm": "제천시"}
+{"sdCd": "43", "sggCd": "43710", "sggNm": "청원군"}
+{"sdCd": "43", "sggCd": "43720", "sggNm": "보은군"}
+{"sdCd": "43", "sggCd": "43730", "sggNm": "옥천군"}
+{"sdCd": "43", "sggCd": "43740", "sggNm": "영동군"}
+{"sdCd": "43", "sggCd": "43745", "sggNm": "증평군"}
+{"sdCd": "43", "sggCd": "43750", "sggNm": "진천군"}
+{"sdCd": "43", "sggCd": "43760", "sggNm": "괴산군"}
+{"sdCd": "43", "sggCd": "43770", "sggNm": "음성군"}
+{"sdCd": "43", "sggCd": "43780", "sggNm": "중원군"}
+{"sdCd": "43", "sggCd": "43790", "sggNm": "제원군"}
+{"sdCd": "43", "sggCd": "43795", "sggNm": "제천군"}
+{"sdCd": "43", "sggCd": "43800", "sggNm": "단양군"}
+{"sdCd": "41", "sggCd": "41010", "sggNm": "인천시"}
+{"sdCd": "41", "sggCd": "41011", "sggNm": "인천시 중구"}
+{"sdCd": "41", "sggCd": "41012", "sggNm": "인천시 동구"}
+{"sdCd": "41", "sggCd": "41013", "sggNm": "인천시 남구"}
+{"sdCd": "41", "sggCd": "41014", "sggNm": "인천시 북구"}
+{"sdCd": "41", "sggCd": "41050", "sggNm": "부천군"}
+{"sdCd": "41", "sggCd": "41110", "sggNm": "수원시"}
+{"sdCd": "41", "sggCd": "41111", "sggNm": "수원시 장안구"}
+{"sdCd": "41", "sggCd": "41113", "sggNm": "수원시 권선구"}
+{"sdCd": "41", "sggCd": "41115", "sggNm": "수원시 팔달구"}
+{"sdCd": "41", "sggCd": "41117", "sggNm": "수원시 영통구"}
+{"sdCd": "41", "sggCd": "41130", "sggNm": "성남시"}
+{"sdCd": "41", "sggCd": "41131", "sggNm": "성남시 수정구"}
+{"sdCd": "41", "sggCd": "41133", "sggNm": "성남시 중원구"}
+{"sdCd": "41", "sggCd": "41135", "sggNm": "성남시 분당구"}
+{"sdCd": "41", "sggCd": "41150", "sggNm": "의정부시"}
+{"sdCd": "41", "sggCd": "41170", "sggNm": "안양시"}
+{"sdCd": "41", "sggCd": "41171", "sggNm": "안양시 만안구"}
+{"sdCd": "41", "sggCd": "41173", "sggNm": "안양시 동안구"}
+{"sdCd": "41", "sggCd": "41190", "sggNm": "부천시"}
+{"sdCd": "41", "sggCd": "41191", "sggNm": "부천시 중구"}
+{"sdCd": "41", "sggCd": "41192", "sggNm": "부천시 원미구"}
+{"sdCd": "41", "sggCd": "41193", "sggNm": "부천시 남구"}
+{"sdCd": "41", "sggCd": "41194", "sggNm": "부천시 소사구"}
+{"sdCd": "41", "sggCd": "41195", "sggNm": "부천시 원미구"}
+{"sdCd": "41", "sggCd": "41196", "sggNm": "부천시 오정구"}
+{"sdCd": "41", "sggCd": "41197", "sggNm": "부천시 소사구"}
+{"sdCd": "41", "sggCd": "41199", "sggNm": "부천시 오정구"}
+{"sdCd": "41", "sggCd": "41210", "sggNm": "광명시"}
+{"sdCd": "41", "sggCd": "41220", "sggNm": "평택시"}
+{"sdCd": "41", "sggCd": "41230", "sggNm": "송탄시"}
+{"sdCd": "41", "sggCd": "41250", "sggNm": "동두천시"}
+{"sdCd": "41", "sggCd": "41270", "sggNm": "안산시"}
+{"sdCd": "41", "sggCd": "41271", "sggNm": "안산시 상록구"}
+{"sdCd": "41", "sggCd": "41273", "sggNm": "안산시 단원구"}
+{"sdCd": "41", "sggCd": "41280", "sggNm": "고양시"}
+{"sdCd": "41", "sggCd": "41281", "sggNm": "고양시 덕양구"}
+{"sdCd": "41", "sggCd": "41283", "sggNm": "고양시 일산구"}
+{"sdCd": "41", "sggCd": "41285", "sggNm": "고양시 일산동구"}
+{"sdCd": "41", "sggCd": "41287", "sggNm": "고양시 일산서구"}
+{"sdCd": "41", "sggCd": "41290", "sggNm": "과천시"}
+{"sdCd": "41", "sggCd": "41310", "sggNm": "구리시"}
+{"sdCd": "41", "sggCd": "41330", "sggNm": "평택시"}
+{"sdCd": "41", "sggCd": "41350", "sggNm": "미금시"}
+{"sdCd": "41", "sggCd": "41360", "sggNm": "남양주시"}
+{"sdCd": "41", "sggCd": "41370", "sggNm": "오산시"}
+{"sdCd": "41", "sggCd": "41390", "sggNm": "시흥시"}
+{"sdCd": "41", "sggCd": "41410", "sggNm": "군포시"}
+{"sdCd": "41", "sggCd": "41430", "sggNm": "의왕시"}
+{"sdCd": "41", "sggCd": "41450", "sggNm": "하남시"}
+{"sdCd": "41", "sggCd": "41460", "sggNm": "용인시"}
+{"sdCd": "41", "sggCd": "41461", "sggNm": "용인시 처인구"}
+{"sdCd": "41", "sggCd": "41463", "sggNm": "용인시 기흥구"}
+{"sdCd": "41", "sggCd": "41465", "sggNm": "용인시 수지구"}
+{"sdCd": "41", "sggCd": "41480", "sggNm": "파주시"}
+{"sdCd": "41", "sggCd": "41500", "sggNm": "이천시"}
+{"sdCd": "41", "sggCd": "41550", "sggNm": "안성시"}
+{"sdCd": "41", "sggCd": "41570", "sggNm": "김포시"}
+{"sdCd": "41", "sggCd": "41590", "sggNm": "화성시"}
+{"sdCd": "41", "sggCd": "41610", "sggNm": "광주시"}
+{"sdCd": "41", "sggCd": "41630", "sggNm": "양주시"}
+{"sdCd": "41", "sggCd": "41650", "sggNm": "포천시"}
+{"sdCd": "41", "sggCd": "41670", "sggNm": "여주시"}
+{"sdCd": "41", "sggCd": "41710", "sggNm": "양주군"}
+{"sdCd": "41", "sggCd": "41720", "sggNm": "남양주군"}
+{"sdCd": "41", "sggCd": "41730", "sggNm": "여주군"}
+{"sdCd": "41", "sggCd": "41740", "sggNm": "평택군"}
+{"sdCd": "41", "sggCd": "41750", "sggNm": "화성군"}
+{"sdCd": "41", "sggCd": "41760", "sggNm": "시흥군"}
+{"sdCd": "41", "sggCd": "41770", "sggNm": "파주군"}
+{"sdCd": "41", "sggCd": "41780", "sggNm": "고양군"}
+{"sdCd": "41", "sggCd": "41790", "sggNm": "광주군"}
+{"sdCd": "41", "sggCd": "41800", "sggNm": "연천군"}
+{"sdCd": "41", "sggCd": "41810", "sggNm": "포천군"}
+{"sdCd": "41", "sggCd": "41820", "sggNm": "가평군"}
+{"sdCd": "41", "sggCd": "41830", "sggNm": "양평군"}
+{"sdCd": "41", "sggCd": "41840", "sggNm": "이천군"}
+{"sdCd": "41", "sggCd": "41850", "sggNm": "용인군"}
+{"sdCd": "41", "sggCd": "41860", "sggNm": "안성군"}
+{"sdCd": "41", "sggCd": "41870", "sggNm": "김포군"}
+{"sdCd": "41", "sggCd": "41880", "sggNm": "강화군"}
+{"sdCd": "41", "sggCd": "41890", "sggNm": "옹진군"}
+{"sdCd": "45", "sggCd": "45050", "sggNm": "금산군"}
+{"sdCd": "45", "sggCd": "45110", "sggNm": "전주시"}
+{"sdCd": "45", "sggCd": "45111", "sggNm": "전주시 완산구"}
+{"sdCd": "45", "sggCd": "45113", "sggNm": "전주시 덕진구"}
+{"sdCd": "45", "sggCd": "45130", "sggNm": "군산시"}
+{"sdCd": "45", "sggCd": "45140", "sggNm": "익산시"}
+{"sdCd": "45", "sggCd": "45150", "sggNm": "이리시"}
+{"sdCd": "45", "sggCd": "45170", "sggNm": "정주시"}
+{"sdCd": "45", "sggCd": "45180", "sggNm": "정읍시"}
+{"sdCd": "45", "sggCd": "45190", "sggNm": "남원시"}
+{"sdCd": "45", "sggCd": "45210", "sggNm": "김제시"}
+{"sdCd": "45", "sggCd": "45710", "sggNm": "완주군"}
+{"sdCd": "45", "sggCd": "45720", "sggNm": "진안군"}
+{"sdCd": "45", "sggCd": "45730", "sggNm": "무주군"}
+{"sdCd": "45", "sggCd": "45740", "sggNm": "장수군"}
+{"sdCd": "45", "sggCd": "45750", "sggNm": "임실군"}
+{"sdCd": "45", "sggCd": "45760", "sggNm": "남원군"}
+{"sdCd": "45", "sggCd": "45770", "sggNm": "순창군"}
+{"sdCd": "45", "sggCd": "45780", "sggNm": "정읍군"}
+{"sdCd": "45", "sggCd": "45790", "sggNm": "고창군"}
+{"sdCd": "45", "sggCd": "45800", "sggNm": "부안군"}
+{"sdCd": "45", "sggCd": "45810", "sggNm": "김제군"}
+{"sdCd": "45", "sggCd": "45820", "sggNm": "옥구군"}
+{"sdCd": "45", "sggCd": "45830", "sggNm": "익산군"}
+{"sdCd": "44", "sggCd": "44050", "sggNm": "천안군"}
+{"sdCd": "44", "sggCd": "44110", "sggNm": "대전시"}
+{"sdCd": "44", "sggCd": "44111", "sggNm": "대전시 동구"}
+{"sdCd": "44", "sggCd": "44113", "sggNm": "대전시 중구"}
+{"sdCd": "44", "sggCd": "44115", "sggNm": "대전시 서구"}
+{"sdCd": "44", "sggCd": "44130", "sggNm": "천안시"}
+{"sdCd": "44", "sggCd": "44131", "sggNm": "천안시 동남구"}
+{"sdCd": "44", "sggCd": "44133", "sggNm": "천안시 서북구"}
+{"sdCd": "44", "sggCd": "44150", "sggNm": "공주시"}
+{"sdCd": "44", "sggCd": "44170", "sggNm": "대천시"}
+{"sdCd": "44", "sggCd": "44180", "sggNm": "보령시"}
+{"sdCd": "44", "sggCd": "44190", "sggNm": "온양시"}
+{"sdCd": "44", "sggCd": "44200", "sggNm": "아산시"}
+{"sdCd": "44", "sggCd": "44210", "sggNm": "서산시"}
+{"sdCd": "44", "sggCd": "44230", "sggNm": "논산시"}
+{"sdCd": "44", "sggCd": "44250", "sggNm": "계룡시"}
+{"sdCd": "44", "sggCd": "44270", "sggNm": "당진시"}
+{"sdCd": "44", "sggCd": "44710", "sggNm": "금산군"}
+{"sdCd": "44", "sggCd": "44720", "sggNm": "대덕군"}
+{"sdCd": "44", "sggCd": "44730", "sggNm": "연기군"}
+{"sdCd": "44", "sggCd": "44740", "sggNm": "공주군"}
+{"sdCd": "44", "sggCd": "44750", "sggNm": "논산군"}
+{"sdCd": "44", "sggCd": "44760", "sggNm": "부여군"}
+{"sdCd": "44", "sggCd": "44770", "sggNm": "서천군"}
+{"sdCd": "44", "sggCd": "44780", "sggNm": "보령군"}
+{"sdCd": "44", "sggCd": "44790", "sggNm": "청양군"}
+{"sdCd": "44", "sggCd": "44800", "sggNm": "홍성군"}
+{"sdCd": "44", "sggCd": "44810", "sggNm": "예산군"}
+{"sdCd": "44", "sggCd": "44820", "sggNm": "서산군"}
+{"sdCd": "44", "sggCd": "44825", "sggNm": "태안군"}
+{"sdCd": "44", "sggCd": "44830", "sggNm": "당진군"}
+{"sdCd": "44", "sggCd": "44840", "sggNm": "아산군"}
+{"sdCd": "44", "sggCd": "44850", "sggNm": "천원군"}
+{"sdCd": "44", "sggCd": "44860", "sggNm": "천안군"}
+{"sdCd": "47", "sggCd": "47010", "sggNm": "대구시"}
+{"sdCd": "47", "sggCd": "47011", "sggNm": "대구시 중구"}
+{"sdCd": "47", "sggCd": "47012", "sggNm": "대구시 동구"}
+{"sdCd": "47", "sggCd": "47013", "sggNm": "대구시 서구"}
+{"sdCd": "47", "sggCd": "47014", "sggNm": "대구시 남구"}
+{"sdCd": "47", "sggCd": "47015", "sggNm": "대구시 북구"}
+{"sdCd": "47", "sggCd": "47016", "sggNm": "대구시 수성구"}
+{"sdCd": "47", "sggCd": "47020", "sggNm": "신안동시"}
+{"sdCd": "47", "sggCd": "47050", "sggNm": "영주군"}
+{"sdCd": "47", "sggCd": "47110", "sggNm": "포항시"}
+{"sdCd": "47", "sggCd": "47111", "sggNm": "포항시 남구"}
+{"sdCd": "47", "sggCd": "47113", "sggNm": "포항시 북구"}
+{"sdCd": "47", "sggCd": "47130", "sggNm": "경주시"}
+{"sdCd": "47", "sggCd": "47150", "sggNm": "김천시"}
+{"sdCd": "47", "sggCd": "47170", "sggNm": "안동시"}
+{"sdCd": "47", "sggCd": "47190", "sggNm": "구미시"}
+{"sdCd": "47", "sggCd": "47210", "sggNm": "영주시"}
+{"sdCd": "47", "sggCd": "47230", "sggNm": "영천시"}
+{"sdCd": "47", "sggCd": "47250", "sggNm": "상주시"}
+{"sdCd": "47", "sggCd": "47270", "sggNm": "점촌시"}
+{"sdCd": "47", "sggCd": "47280", "sggNm": "문경시"}
+{"sdCd": "47", "sggCd": "47290", "sggNm": "경산시"}
+{"sdCd": "47", "sggCd": "47710", "sggNm": "달성군"}
+{"sdCd": "47", "sggCd": "47720", "sggNm": "군위군"}
+{"sdCd": "47", "sggCd": "47730", "sggNm": "의성군"}
+{"sdCd": "47", "sggCd": "47740", "sggNm": "안동군"}
+{"sdCd": "47", "sggCd": "47750", "sggNm": "청송군"}
+{"sdCd": "47", "sggCd": "47760", "sggNm": "영양군"}
+{"sdCd": "47", "sggCd": "47770", "sggNm": "영덕군"}
+{"sdCd": "47", "sggCd": "47780", "sggNm": "영일군"}
+{"sdCd": "47", "sggCd": "47790", "sggNm": "월성군"}
+{"sdCd": "47", "sggCd": "47795", "sggNm": "경주군"}
+{"sdCd": "47", "sggCd": "47800", "sggNm": "영천군"}
+{"sdCd": "47", "sggCd": "47810", "sggNm": "경산군"}
+{"sdCd": "47", "sggCd": "47820", "sggNm": "청도군"}
+{"sdCd": "47", "sggCd": "47830", "sggNm": "고령군"}
+{"sdCd": "47", "sggCd": "47840", "sggNm": "성주군"}
+{"sdCd": "47", "sggCd": "47850", "sggNm": "칠곡군"}
+{"sdCd": "47", "sggCd": "47860", "sggNm": "금릉군"}
+{"sdCd": "47", "sggCd": "47870", "sggNm": "선산군"}
+{"sdCd": "47", "sggCd": "47880", "sggNm": "상주군"}
+{"sdCd": "47", "sggCd": "47890", "sggNm": "문경군"}
+{"sdCd": "47", "sggCd": "47900", "sggNm": "예천군"}
+{"sdCd": "47", "sggCd": "47910", "sggNm": "영풍군"}
+{"sdCd": "47", "sggCd": "47920", "sggNm": "봉화군"}
+{"sdCd": "47", "sggCd": "47930", "sggNm": "울진군"}
+{"sdCd": "47", "sggCd": "47940", "sggNm": "울릉군"}
+{"sdCd": "46", "sggCd": "46010", "sggNm": "광주시"}
+{"sdCd": "46", "sggCd": "46011", "sggNm": "광주시 동구"}
+{"sdCd": "46", "sggCd": "46012", "sggNm": "광주시 서구"}
+{"sdCd": "46", "sggCd": "46013", "sggNm": "광주시 북구"}
+{"sdCd": "46", "sggCd": "46020", "sggNm": "금성시"}
+{"sdCd": "46", "sggCd": "46030", "sggNm": "송정시"}
+{"sdCd": "46", "sggCd": "46050", "sggNm": "광산군"}
+{"sdCd": "46", "sggCd": "46110", "sggNm": "목포시"}
+{"sdCd": "46", "sggCd": "46130", "sggNm": "여수시"}
+{"sdCd": "46", "sggCd": "46150", "sggNm": "순천시"}
+{"sdCd": "46", "sggCd": "46170", "sggNm": "나주시"}
+{"sdCd": "46", "sggCd": "46190", "sggNm": "여천시"}
+{"sdCd": "46", "sggCd": "46210", "sggNm": "동광양시"}
+{"sdCd": "46", "sggCd": "46230", "sggNm": "광양시"}
+{"sdCd": "46", "sggCd": "46710", "sggNm": "담양군"}
+{"sdCd": "46", "sggCd": "46720", "sggNm": "곡성군"}
+{"sdCd": "46", "sggCd": "46730", "sggNm": "구례군"}
+{"sdCd": "46", "sggCd": "46740", "sggNm": "광양군"}
+{"sdCd": "46", "sggCd": "46750", "sggNm": "여천군"}
+{"sdCd": "46", "sggCd": "46760", "sggNm": "승주군"}
+{"sdCd": "46", "sggCd": "46770", "sggNm": "고흥군"}
+{"sdCd": "46", "sggCd": "46780", "sggNm": "보성군"}
+{"sdCd": "46", "sggCd": "46790", "sggNm": "화순군"}
+{"sdCd": "46", "sggCd": "46800", "sggNm": "장흥군"}
+{"sdCd": "46", "sggCd": "46810", "sggNm": "강진군"}
+{"sdCd": "46", "sggCd": "46820", "sggNm": "해남군"}
+{"sdCd": "46", "sggCd": "46830", "sggNm": "영암군"}
+{"sdCd": "46", "sggCd": "46840", "sggNm": "무안군"}
+{"sdCd": "46", "sggCd": "46850", "sggNm": "나주군"}
+{"sdCd": "46", "sggCd": "46860", "sggNm": "함평군"}
+{"sdCd": "46", "sggCd": "46870", "sggNm": "영광군"}
+{"sdCd": "46", "sggCd": "46880", "sggNm": "장성군"}
+{"sdCd": "46", "sggCd": "46890", "sggNm": "완도군"}
+{"sdCd": "46", "sggCd": "46900", "sggNm": "진도군"}
+{"sdCd": "46", "sggCd": "46910", "sggNm": "신안군"}
+{"sdCd": "49", "sggCd": "49110", "sggNm": "제주시"}
+{"sdCd": "49", "sggCd": "49130", "sggNm": "서귀포시"}
+{"sdCd": "49", "sggCd": "49710", "sggNm": "북제주군"}
+{"sdCd": "49", "sggCd": "49720", "sggNm": "남제주군"}
+{"sdCd": "48", "sggCd": "48010", "sggNm": "부산시"}
+{"sdCd": "48", "sggCd": "48011", "sggNm": "부산시 중구"}
+{"sdCd": "48", "sggCd": "48012", "sggNm": "부산시 서구"}
+{"sdCd": "48", "sggCd": "48013", "sggNm": "부산시 동구"}
+{"sdCd": "48", "sggCd": "48014", "sggNm": "부산시 영도구"}
+{"sdCd": "48", "sggCd": "48015", "sggNm": "부산시 부산진"}
+{"sdCd": "48", "sggCd": "48016", "sggNm": "부산시 동래구"}
+{"sdCd": "48", "sggCd": "48050", "sggNm": "창원군"}
+{"sdCd": "48", "sggCd": "48060", "sggNm": "울산군"}
+{"sdCd": "48", "sggCd": "48070", "sggNm": "동래군"}
+{"sdCd": "48", "sggCd": "48110", "sggNm": "창원시"}
+{"sdCd": "48", "sggCd": "48120", "sggNm": "창원시"}
+{"sdCd": "48", "sggCd": "48121", "sggNm": "창원시 의창구"}
+{"sdCd": "48", "sggCd": "48123", "sggNm": "창원시 성산구"}
+{"sdCd": "48", "sggCd": "48125", "sggNm": "창원시 마산합포구"}
+{"sdCd": "48", "sggCd": "48127", "sggNm": "창원시 마산회원구"}
+{"sdCd": "48", "sggCd": "48129", "sggNm": "창원시 진해구"}
+{"sdCd": "48", "sggCd": "48130", "sggNm": "울산시"}
+{"sdCd": "48", "sggCd": "48131", "sggNm": "울산시 중구"}
+{"sdCd": "48", "sggCd": "48133", "sggNm": "울산시 남구"}
+{"sdCd": "48", "sggCd": "48135", "sggNm": "울산시 동구"}
+{"sdCd": "48", "sggCd": "48137", "sggNm": "울산시 울주구"}
+{"sdCd": "48", "sggCd": "48150", "sggNm": "마산시"}
+{"sdCd": "48", "sggCd": "48151", "sggNm": "마산시 합포구"}
+{"sdCd": "48", "sggCd": "48153", "sggNm": "마산시 회원구"}
+{"sdCd": "48", "sggCd": "48160", "sggNm": "마산시"}
+{"sdCd": "48", "sggCd": "48170", "sggNm": "진주시"}
+{"sdCd": "48", "sggCd": "48190", "sggNm": "진해시"}
+{"sdCd": "48", "sggCd": "48210", "sggNm": "충무시"}
+{"sdCd": "48", "sggCd": "48220", "sggNm": "통영시"}
+{"sdCd": "48", "sggCd": "48230", "sggNm": "삼천포시"}
+{"sdCd": "48", "sggCd": "48240", "sggNm": "사천시"}
+{"sdCd": "48", "sggCd": "48250", "sggNm": "김해시"}
+{"sdCd": "48", "sggCd": "48270", "sggNm": "밀양시"}
+{"sdCd": "48", "sggCd": "48290", "sggNm": "장승포시"}
+{"sdCd": "48", "sggCd": "48310", "sggNm": "거제시"}
+{"sdCd": "48", "sggCd": "48330", "sggNm": "양산시"}
+{"sdCd": "48", "sggCd": "48710", "sggNm": "진양군"}
+{"sdCd": "48", "sggCd": "48720", "sggNm": "의령군"}
+{"sdCd": "48", "sggCd": "48730", "sggNm": "함안군"}
+{"sdCd": "48", "sggCd": "48740", "sggNm": "창녕군"}
+{"sdCd": "48", "sggCd": "48750", "sggNm": "밀양군"}
+{"sdCd": "48", "sggCd": "48760", "sggNm": "양산군"}
+{"sdCd": "48", "sggCd": "48770", "sggNm": "울주군"}
+{"sdCd": "48", "sggCd": "48775", "sggNm": "울산군"}
+{"sdCd": "48", "sggCd": "48780", "sggNm": "김해군"}
+{"sdCd": "48", "sggCd": "48790", "sggNm": "의창군"}
+{"sdCd": "48", "sggCd": "48795", "sggNm": "창원군"}
+{"sdCd": "48", "sggCd": "48800", "sggNm": "통영군"}
+{"sdCd": "48", "sggCd": "48810", "sggNm": "거제군"}
+{"sdCd": "48", "sggCd": "48820", "sggNm": "고성군"}
+{"sdCd": "48", "sggCd": "48830", "sggNm": "사천군"}
+{"sdCd": "48", "sggCd": "48840", "sggNm": "남해군"}
+{"sdCd": "48", "sggCd": "48850", "sggNm": "하동군"}
+{"sdCd": "48", "sggCd": "48860", "sggNm": "산청군"}
+{"sdCd": "48", "sggCd": "48870", "sggNm": "함양군"}
+{"sdCd": "48", "sggCd": "48880", "sggNm": "거창군"}
+{"sdCd": "48", "sggCd": "48890", "sggNm": "합천군"}
+{"sdCd": "50", "sggCd": "50110", "sggNm": "제주시"}
+{"sdCd": "50", "sggCd": "50130", "sggNm": "서귀포시"}
+{"sdCd": "52", "sggCd": "52110", "sggNm": "전주시"}
+{"sdCd": "52", "sggCd": "52111", "sggNm": "전주시 완산구"}
+{"sdCd": "52", "sggCd": "52113", "sggNm": "전주시 덕진구"}
+{"sdCd": "52", "sggCd": "52130", "sggNm": "군산시"}
+{"sdCd": "52", "sggCd": "52140", "sggNm": "익산시"}
+{"sdCd": "52", "sggCd": "52180", "sggNm": "정읍시"}
+{"sdCd": "52", "sggCd": "52190", "sggNm": "남원시"}
+{"sdCd": "52", "sggCd": "52210", "sggNm": "김제시"}
+{"sdCd": "52", "sggCd": "52710", "sggNm": "완주군"}
+{"sdCd": "52", "sggCd": "52720", "sggNm": "진안군"}
+{"sdCd": "52", "sggCd": "52730", "sggNm": "무주군"}
+{"sdCd": "52", "sggCd": "52740", "sggNm": "장수군"}
+{"sdCd": "52", "sggCd": "52750", "sggNm": "임실군"}
+{"sdCd": "52", "sggCd": "52770", "sggNm": "순창군"}
+{"sdCd": "52", "sggCd": "52790", "sggNm": "고창군"}
+{"sdCd": "52", "sggCd": "52800", "sggNm": "부안군"}
+{"sdCd": "51", "sggCd": "51110", "sggNm": "춘천시"}
+{"sdCd": "51", "sggCd": "51130", "sggNm": "원주시"}
+{"sdCd": "51", "sggCd": "51150", "sggNm": "강릉시"}
+{"sdCd": "51", "sggCd": "51170", "sggNm": "동해시"}
+{"sdCd": "51", "sggCd": "51190", "sggNm": "태백시"}
+{"sdCd": "51", "sggCd": "51210", "sggNm": "속초시"}
+{"sdCd": "51", "sggCd": "51230", "sggNm": "삼척시"}
+{"sdCd": "51", "sggCd": "51720", "sggNm": "홍천군"}
+{"sdCd": "51", "sggCd": "51730", "sggNm": "횡성군"}
+{"sdCd": "51", "sggCd": "51750", "sggNm": "영월군"}
+{"sdCd": "51", "sggCd": "51760", "sggNm": "평창군"}
+{"sdCd": "51", "sggCd": "51770", "sggNm": "정선군"}
+{"sdCd": "51", "sggCd": "51780", "sggNm": "철원군"}
+{"sdCd": "51", "sggCd": "51790", "sggNm": "화천군"}
+{"sdCd": "51", "sggCd": "51800", "sggNm": "양구군"}
+{"sdCd": "51", "sggCd": "51810", "sggNm": "인제군"}
+{"sdCd": "51", "sggCd": "51820", "sggNm": "고성군"}
+{"sdCd": "51", "sggCd": "51830", "sggNm": "양양군"}
