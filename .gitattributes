@@ -1,3 +1,4 @@
+*.json filter=lfs diff=lfs merge=lfs -text
 Crawling/*.json filter=lfs diff=lfs merge=lfs -text
 Tour/.kakao_local_cache.json filter=lfs diff=lfs merge=lfs -text
 tourism_transport_mapper/버스노선/*.json filter=lfs diff=lfs merge=lfs -text
