@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>채채 – 여행 추천 챗봇</title>
+  <meta name="color-scheme" content="dark light" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}?v=4" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="{{ url_for('home') }}" aria-label="메인으로">
+        <span class="dot"></span>
+        <strong>채채</strong>
+      </a>
+      <nav class="top-actions">
+        <a class="ghost-btn" href="{{ url_for('index') }}">체험하기</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="splash">
+      <div class="splash-inner">
+        <div class="brand-hero" aria-label="브랜드">
+          <span class="logo-hero" aria-hidden="true">📍</span>
+          <h1 class="title">채채</h1>
+        </div>
+        <div class="hero-lines">
+          <div class="kicker">여행 추천 챗봇</div>
+          <p class="sub">당신만의 완벽한 여행 계획을 세워보세요</p>
+        </div>
+
+        <section class="about-card" aria-labelledby="what-title">
+          <h2 id="what-title">채채는 어떤 서비스인가요?</h2>
+          <p class="lead">
+            채채는 <b>여행 추천 챗봇</b>입니다. 원하는 <b>국내 지역</b>을 입력 후 <b>인기도지수</b> 또는
+            <b>관광 지수</b>를 선택하고, 원하는 <b>테마</b>·<b>기간</b>·<b>이동수단</b>을 고르면
+            그에 맞는 추천 경로를 <b>카드 방식</b>으로 안내해드립니다.
+          </p>
+
+          <div class="features">
+            <div class="fcol">
+              <article class="feature">
+                <span class="ic star" aria-hidden="true">⭐️</span>
+                <div class="meta">
+                  <strong>인기도 지수</strong>
+                  <p>해당 지역에 대한 네이버 블로그 감성 텍스트와 리뷰 수를 종합한 점수</p>
+                </div>
+              </article>
+              <article class="feature">
+                <span class="ic tour" aria-hidden="true">🧭</span>
+                <div class="meta">
+                  <strong>관광 지수</strong>
+                  <p>대중교통 접근성, 테마, 최신성 업데이트 및 밀집도를 종합한 점수</p>
+                </div>
+              </article>
+            </div>
+            <div class="fcol">
+              <article class="feature">
+                <span class="ic cal" aria-hidden="true">📅</span>
+                <div class="meta">
+                  <strong>여행 기간</strong>
+                  <p>1~10일 사이의 여행 일정 계획 가능</p>
+                </div>
+              </article>
+              <article class="feature">
+                <span class="ic transit" aria-hidden="true">🚶</span>
+                <div class="meta">
+                  <strong>이동 수단</strong>
+                  <p>걸어서 이동 또는 대중교통 이용 선택 가능</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="themes">
+            <h3>선택 가능한 테마 <span class="muted">(최대 3개)</span></h3>
+            <ul class="theme-chips" aria-label="테마 목록">
+              <li class="chip">🌿 자연</li>
+              <li class="chip">🏃 레포츠</li>
+              <li class="chip">🛍️ 쇼핑</li>
+              <li class="chip">🍽️ 음식</li>
+              <li class="chip">🎭 문화</li>
+            </ul>
+          </div>
+
+          <aside class="tip-box" role="note">
+            <span class="tip-ic" aria-hidden="true">✨</span>
+            <p>
+              <b>추가 Tip:</b> 원하는 특정 장소가 추천되지 않거나 다른 장소를 보고 싶다면,
+              아래 <b>전체 여행지</b>에서 인기도/관광 지수 순으로 나열된 <br>전체 장소를 확인할 수 있어요.
+            </p>
+          </aside>
+
+          <div class="cta">
+            <a class="primary-btn" href="{{ url_for('index') }}">지금 체험하기</a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="explore" data-api="{{ url_for('api_places') }}">
+      <div class="explore-head">
+        <h2 class="section-title">전체 여행지 둘러보기</h2>
+        <p class="muted">다양한 여행지를 확인해보세요</p>
+
+        <div class="toolbar">
+          <div class="filter-options-group">
+            <div class="filter-group">
+              <label for="sido-filter">지역</label>
+              <select id="sido-filter" class="filter-select">
+                <option value="all">전체</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="cat1-filter">테마</label>
+              <select id="cat1-filter" class="filter-select">
+                <option value="all">전체</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="cat3-filter">상세테마</label>
+              <select id="cat3-filter" class="filter-select">
+                <option value="all">전체</option>
+              </select>
+            </div>
+            <div class="filter-group search-group">
+              <label for="search-input">검색</label>
+              <input id="search-input" class="filter-search" type="search" placeholder="장소명 검색" />
+            </div>
+          </div>
+          
+          <div class="sort-options-group">
+            <div class="filter-group">
+              <label id="sortLabel">정렬</label>
+              <div id="sortDropdown" class="sort-dropdown" data-current="review" aria-labelledby="sortLabel">
+                <button type="button" class="sort-trigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="label">인기도 지수</span>
+                  <span class="chev" aria-hidden="true">▾</span>
+                </button>
+                <ul class="sort-menu" role="listbox">
+                  <li role="option" data-value="review" aria-selected="true">인기도 지수</li>
+                  <li role="option" data-value="tour">관광 지수</li>
+                </ul>
+              </div>
+            </div>
+            <div class="filter-group">
+              <label id="orderLabel">정렬 순서</label>
+              <div id="orderDropdown" class="sort-dropdown" data-current="desc" aria-labelledby="orderLabel">
+                <button type="button" class="sort-trigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="label">높은 순</span>
+                  <span class="chev" aria-hidden="true">▾</span>
+                </button>
+                <ul class="sort-menu" role="listbox">
+                  <li role="option" data-value="desc" aria-selected="true">높은 순</li>
+                  <li role="option" data-value="asc">낮은 순</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="grid" class="card-grid" aria-live="polite"></div>
+
+      <nav class="pagination" aria-label="페이지 네비게이션">
+        <button id="prevPages" class="page-btn prev" type="button" aria-label="이전 10페이지">‹</button>
+        <ol id="pageList" class="page-list" role="list"></ol>
+        <button id="nextPages" class="page-btn next" type="button" aria-label="다음 10페이지">›</button>
+      </nav>
+    </section>
+  </main>
+
+  <div id="ratingModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <header class="modal-header">
+        <div>
+          <h3 id="modalTitle">별점 남기기</h3>
+          <span id="modalPlaceTitle" class="modal-title-place"></span>
+        </div>
+        <button type="button" class="modal-close-btn" aria-label="닫기">&times;</button>
+      </header>
+      <div class="modal-body">
+        <form id="ratingForm" class="rating-form">
+          <div class="stars" data-rating="0">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+        </form>
+      </div>
+      <footer class="modal-actions">
+        <button type="button" class="modal-btn modal-close-btn">취소</button>
+        <button type="button" id="submitRatingBtn" class="modal-btn primary" disabled>저장</button>
+      </footer>
+    </div>
+  </div>
+
+  <div id="reviewModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle">
+    <div class="modal-content wide">
+        <header class="modal-header">
+            <div>
+                <h3 id="reviewModalTitle">장소 후기</h3>
+                <span id="reviewModalPlaceTitle" class="modal-title-place"></span>
+            </div>
+            <button type="button" class="modal-close-btn" aria-label="닫기">&times;</button>
+        </header>
+        <div class="review-content-container">
+            <div id="reviewIframeContainer" class="review-container hidden">
+                <iframe id="reviewIframe" src="about:blank" frameborder="0"></iframe>
+            </div>
+            <div id="customReviewContainer" class="review-container hidden">
+                <div class="review-modal-toolbar">
+                    <div class="sort-dropdown" id="reviewSortDropdown" data-current="newest">
+                        <button type="button" class="sort-trigger" aria-haspopup="listbox" aria-expanded="false">
+                            <span class="label">최신순</span>
+                            <span class="chev" aria-hidden="true">▾</span>
+                        </button>
+                        <ul class="sort-menu" role="listbox">
+                            <li role="option" data-value="newest" aria-selected="true">최신순</li>
+                            <li role="option" data-value="oldest">오래된순</li>
+                        </ul>
+                    </div>
+                    <button type="button" id="openWriteReviewBtn" class="primary-btn small">후기 작성</button>
+                </div>
+                <div id="reviewList" class="review-modal-body"></div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="writeReviewModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="writeReviewModalTitle">
+    <div class="modal-content">
+        <header class="modal-header">
+            <div>
+                <h3 id="writeReviewModalTitle">후기 작성</h3>
+                <span id="writeReviewModalPlaceTitle" class="modal-title-place"></span>
+            </div>
+            <button type="button" class="modal-close-btn" aria-label="닫기">&times;</button>
+        </header>
+        <div class="modal-body">
+            <textarea id="reviewTextarea" class="review-textarea" placeholder="이 장소에 대한 경험을 공유해주세요. (10자 이상)" maxlength="500"></textarea>
+        </div>
+        <footer class="modal-actions">
+            <button type="button" class="modal-btn modal-close-btn">취소</button>
+            <button type="button" id="submitReviewBtn" class="modal-btn primary" disabled>완료</button>
+        </footer>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/home.js') }}?v=11"></script>
+
+  <noscript>
+    <div style="max-width:1100px;margin:24px auto;padding:12px;border:1px solid #ccc;border-radius:12px">
+      이 페이지는 자바스크립트가 필요합니다. 브라우저 설정에서 JavaScript를 활성화해 주세요.
+    </div>
+  </noscript>
+</body>
+</html>
