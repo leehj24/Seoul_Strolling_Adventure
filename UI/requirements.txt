@@ -1,0 +1,11 @@
+
+Flask
+Flask-Session
+gunicorn
+requests
+python-dotenv
+pandas
+numpy
+tqdm
+vobject
+reportlab
